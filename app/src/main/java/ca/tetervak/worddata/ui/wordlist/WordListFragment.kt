@@ -26,15 +26,15 @@ class WordListFragment : Fragment() {
     ): View {
         _binding = FragmentWordListBinding.inflate(inflater, container, false)
 
+        val adapter = WordListAdapter()
+        binding.recyclerView.adapter = adapter
+
 
         return binding.root
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
