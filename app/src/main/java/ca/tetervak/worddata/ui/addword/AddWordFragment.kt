@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.worddata.R
-import ca.tetervak.worddata.databinding.FragmentSecondBinding
+import ca.tetervak.worddata.databinding.FragmentAddWordBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class AddWordFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentAddWordBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +25,7 @@ class AddWordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentAddWordBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -34,7 +34,7 @@ class AddWordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().popBackStack()
         }
     }
 
