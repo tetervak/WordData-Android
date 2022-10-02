@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import ca.tetervak.worddatalab.data.WordEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -75,7 +74,7 @@ abstract class WordDatabase : RoomDatabase() {
 
             var word = WordEntity("Hello")
             wordDao.insertWordEntity(word)
-            word = WordEntity("World!")
+            word = WordEntity("World")
             wordDao.insertWordEntity(word)
         }
     }

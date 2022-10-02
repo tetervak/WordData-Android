@@ -24,7 +24,7 @@ class WordListAdapter : ListAdapter<Word, WordListAdapter.WordViewHolder>(WORDS_
 
     class WordViewHolder(
         private val binding: WordListItemBinding
-    ) : RecyclerView.ViewHolder(binding.wordView) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(word: String) {
             binding.wordView.text = word

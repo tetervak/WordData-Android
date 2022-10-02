@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ca.tetervak.worddatalab.data.WordEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
