@@ -20,4 +20,8 @@
         android:name="ca.tetervak.worddata.ui.addword.AddWordFragment"
         android:label="@string/add_word_fragment_label"
         tools:layout="@layout/fragment_add_word" />
+    <dialog
+        android:id="@+id/aboutFragment"
+        android:name="ca.tetervak.worddata.ui.about.AboutFragment"
+        android:label="AboutFragment" /><action android:id="@+id/action_global_aboutFragment" app:destination="@id/aboutFragment"/>
 </navigation>

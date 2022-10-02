@@ -18,10 +18,15 @@ class MainViewModel(
     // - Repository is completely separated from the UI through the ViewModel.
     val liveAllWords: LiveData<List<Word>> = repository.allWordsFlow.asLiveData()
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
+    fun addSampleData() = viewModelScope.launch {
+        repository.insertSampleData()
+    }
+
     fun insertWord(word: Word) = viewModelScope.launch {
         repository.insertWord(word)
+    }
+
+    fun deleteAllWords() =  viewModelScope.launch {
+        repository.deleteAllWords()
     }
 }

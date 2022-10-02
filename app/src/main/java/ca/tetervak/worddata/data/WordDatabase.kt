@@ -70,7 +70,7 @@ abstract class WordDatabase : RoomDatabase() {
         suspend fun populateDatabase(wordDao: WordDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            wordDao.deleteAll()
+            wordDao.deleteAllWordEntities()
 
             var word = WordEntity("Hello")
             wordDao.insertWordEntity(word)

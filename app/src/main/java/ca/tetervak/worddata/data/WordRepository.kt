@@ -10,15 +10,22 @@ class WordRepository(private val wordDao: WordDao) {
     // Observed Flow will notify the observer when the data has changed.
     val allWordsFlow: Flow<List<Word>> =
         wordDao.getSortedWordEntities().map { entityList ->
-            entityList.map { entity -> Word(value = entity.value) }
+            entityList.map { entity -> Word(entity.value) }
         }
 
-    // By default Room runs suspend queries off the main thread, therefore, we don't need to
-    // implement anything else to ensure we're not doing long running database work
-    // off the main thread.
-    //@Suppress("RedundantSuspendModifier")
-    //@WorkerThread
     suspend fun insertWord(word: Word) {
-        wordDao.insertWordEntity(WordEntity(value = word.value))
+        wordDao.insertWordEntity(WordEntity(word.value))
+    }
+
+    private suspend fun insertWordList(wordList: List<Word>) {
+        wordDao.insertWordEntityList(wordList.map { word -> WordEntity(word.value) })
+    }
+
+    suspend fun insertSampleData(){
+        insertWordList(listOf(Word("Google"), Word("Apple"), Word("Microsoft")))
+    }
+
+    suspend fun deleteAllWords(){
+        wordDao.deleteAllWordEntities()
     }
 }

@@ -4,6 +4,7 @@
 
     <!-- menu items -->
     <string name="action_about">About</string>
+    <string name="action_add_sample_data">Add Sample Data</string>
     <string name="action_delete_all">Delete All</string>
 
     <!-- about dialog -->
@@ -18,4 +19,5 @@
     <string name="save">Save</string>
     <string name="add_new_word">Add New Word</string>
     <string name="should_not_be_blank">Should not be blank</string>
+
 </resources>

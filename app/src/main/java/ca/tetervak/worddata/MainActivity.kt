@@ -1,14 +1,14 @@
 package ca.tetervak.worddata
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import ca.tetervak.worddata.databinding.ActivityMainBinding
@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory((application as WordDataApplication).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +49,18 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_add_sample_data -> {
+                mainViewModel.addSampleData()
+                true
+            }
+            R.id.action_delete_all -> {
+                mainViewModel.deleteAllWords()
+                true
+            }
+            R.id.action_about -> {
+                navController.navigate(R.id.action_global_aboutFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
