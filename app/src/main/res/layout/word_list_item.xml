@@ -12,8 +12,8 @@
         android:background="@color/blue_300"
         android:gravity="center_horizontal"
         android:padding="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#37474F"
+        android:textSize="18sp"
+        android:textColor="@color/black"
         android:textStyle="bold|italic"
         tools:text="Hello" />
 </FrameLayout>

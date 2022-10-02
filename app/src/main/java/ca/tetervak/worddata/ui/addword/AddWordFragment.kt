@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import ca.tetervak.worddata.MainViewModel
+import ca.tetervak.worddata.MainViewModelFactory
 import ca.tetervak.worddata.R
+import ca.tetervak.worddata.WordDataApplication
 import ca.tetervak.worddata.databinding.FragmentAddWordBinding
+import ca.tetervak.worddata.model.Word
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class AddWordFragment : Fragment() {
 
     private var _binding: FragmentAddWordBinding? = null
@@ -20,22 +22,34 @@ class AddWordFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val mainViewModel: MainViewModel by activityViewModels {
+        MainViewModelFactory((requireActivity().application as WordDataApplication).repository)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentAddWordBinding.inflate(inflater, container, false)
+
+        binding.saveButton.setOnClickListener {
+            onSave()
+        }
+
         return binding.root
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonSecond.setOnClickListener {
+    private fun onSave() {
+        val userInput = binding.editWord.text.toString().trim()
+        if (userInput.isNotEmpty()) {
+            mainViewModel.insertWord(Word(userInput))
             findNavController().popBackStack()
+        } else {
+            binding.editWord.error = getString(R.string.should_not_be_blank)
         }
+
     }
 
     override fun onDestroyView() {
