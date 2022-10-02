@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    android:label="Word List"
+    app:startDestination="@id/WordListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="ca.tetervak.worddata.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/WordListFragment"
+        android:name="ca.tetervak.worddata.ui.wordlist.WordListFragment"
+        android:label="@string/word_list_fragment_label"
+        tools:layout="@layout/fragment_word_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -19,10 +20,5 @@
         android:id="@+id/SecondFragment"
         android:name="ca.tetervak.worddata.SecondFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_second" />
 </navigation>
