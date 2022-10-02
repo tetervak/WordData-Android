@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import ca.tetervak.worddata.MainViewModel
-import ca.tetervak.worddata.MainViewModelFactory
 import ca.tetervak.worddata.R
-import ca.tetervak.worddata.WordDataApplication
 import ca.tetervak.worddata.databinding.FragmentWordListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WordListFragment : Fragment() {
 
     private var _binding: FragmentWordListBinding? = null
@@ -20,9 +20,7 @@ class WordListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val mainViewModel: MainViewModel by activityViewModels {
-        MainViewModelFactory((requireActivity().application as WordDataApplication).repository)
-    }
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     // Needed by data binding adapters, Room (database), Hilt (dependency injection)
     id 'kotlin-kapt'
+    // Needed by Hilt (dependency injection)
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
