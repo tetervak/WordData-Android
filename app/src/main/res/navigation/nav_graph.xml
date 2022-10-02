@@ -11,14 +11,13 @@
         android:name="ca.tetervak.worddata.ui.wordlist.WordListFragment"
         android:label="@string/word_list_fragment_label"
         tools:layout="@layout/fragment_word_list">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_WordListFragment_to_AddWordFragment"
+            app:destination="@id/AddWordFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="ca.tetervak.worddata.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" />
+        android:id="@+id/AddWordFragment"
+        android:name="ca.tetervak.worddata.ui.addword.AddWordFragment"
+        android:label="@string/add_word_fragment_label"
+        tools:layout="@layout/fragment_add_word" />
 </navigation>
