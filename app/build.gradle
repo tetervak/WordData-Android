@@ -67,7 +67,7 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:2.44"
 }
 
-// Allow references to generated code
+// Allow references to generated code (for Hilt)
 kapt {
     correctErrorTypes true
 }
